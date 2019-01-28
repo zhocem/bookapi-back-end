@@ -29,32 +29,46 @@ public class BookDaoImpl implements BookDAO {
 
 	@Override
 	public Book getBook(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		// get the current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
+
+		return currentSession.get(Book.class, id);
 	}
 
 	@Override
 	public List<Book> GetBooks() {
 		// get the current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
-		
+
 		Query<Book> query = currentSession.createQuery("from Book order by title", Book.class);
-		
+
 		List<Book> books = query.getResultList();
-		
+
 		return books;
 
 	}
 
 	@Override
 	public void updateBook(long id, Book book) {
-		// TODO Auto-generated method stub
+		// get the current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
 
+		Book oldBook = currentSession.byId(Book.class).load(id);
+		oldBook.setTitle(book.getTitle());
+		oldBook.setAuthor(book.getAuthor());
+		currentSession.flush();
 	}
 
 	@Override
 	public void deleteBook(long id) {
-		// TODO Auto-generated method stub
+		// get current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
+
+		// delete book with id
+		Query theQuery = currentSession.createQuery("delete from Book where id=:bookId");
+		theQuery.setParameter("bookId", id);
+
+		theQuery.executeUpdate();
 
 	}
 
