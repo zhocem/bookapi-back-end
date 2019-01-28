@@ -1,0 +1,10 @@
+com\douviz\spring\config\MyWebAppInitializer.class
+com\douviz\spring\config\AppConfig.class
+com\douviz\spring\config\WebConfig.class
+com\douviz\spring\controller\BookController.class
+com\douviz\spring\dao\BookDaoImpl.class
+com\douviz\spring\model\Book.class
+com\douviz\spring\service\BookService.class
+com\douviz\spring\service\BookServiceImpl.class
+com\douviz\testdb\TestDB.class
+com\douviz\spring\dao\BookDAO.class
