@@ -40,7 +40,7 @@ public class BookDaoImpl implements BookDAO {
 		// get the current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
 
-		Query<Book> query = currentSession.createQuery("from Book order by title", Book.class);
+		Query<Book> query = currentSession.createQuery("from Book", Book.class);
 
 		List<Book> books = query.getResultList();
 
