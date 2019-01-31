@@ -2,7 +2,9 @@ package com.douviz.spring.controller;
 
 import java.util.List;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -35,7 +37,8 @@ public class BookController {
 	@PostMapping("/api/save")
 	public ResponseEntity<?> saveBook(@RequestBody Book book) {
 		long id = bookService.saveBook(book);
-		return ResponseEntity.ok().body("Book created with id: " + id);
+//		return ResponseEntity.ok().body("Book created with id: " + id);
+		return ResponseEntity.ok().body(book);
 	}
 
 	// get single boog using id
@@ -47,9 +50,9 @@ public class BookController {
 
 	// delete book with id
 	@DeleteMapping("/api/delete/{id}")
-	public ResponseEntity<?> deleteBook(@PathVariable("id") long id) {
-		bookService.deleteBook(id);
-		return ResponseEntity.ok().body("The book with id: " + id + " is deleted");
+	public ResponseEntity deleteBook(@PathVariable("id") long id) {
+		bookService.deleteBook(id);		
+		return new ResponseEntity(HttpStatus.NO_CONTENT);
 	}
 
 	// update book
