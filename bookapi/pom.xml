@@ -11,7 +11,7 @@
 	</properties>
 
 	<dependencies>
-		<!-- Spring MVC Dependency -->
+		<!-- Spring MVC Dependency edited test -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
